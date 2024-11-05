@@ -1,0 +1,23 @@
+<div class="row justify-content-md-center mt-5">
+    <div class="col">
+        <div class="d-flex justify-content-center" *ngFor="let car of cars">
+            <div class="card mb-3" style="width: 600px;">
+                <div class="row g-0">
+                    <div class="col-12">
+                        <div class="card-body">
+                            <h3 class="card-title text-primary">{{car.brand}}</h3>
+                            <h4 class="card-title fw-bold">{{car.model}}</h4>
+                            <p>Color: <b>{{car.color}}</b> | Price: <b>Rs.{{car.price}}</b> | Transmission:
+                                <b>{{car.transmission}}</b> | Fuel: <b>{{car.typeFuel}}</b> | Description:
+                                <b>{{car.description}}</b>
+                            </p>
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-primary me-2">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
