@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { StorageService } from '../../../../auth/services/storage/storage.service';
 import { CustomerService } from '../../services/customer.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-customer-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './customer-dashboard.component.html',
   styleUrl: './customer-dashboard.component.scss'
 })

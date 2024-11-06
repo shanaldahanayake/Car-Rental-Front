@@ -18,6 +18,18 @@ export class CustomerService {
     });
   }
 
+  getCarById(carId:number):Observable<any>{
+    return this.http.get(`${url}/api/customer/car/${carId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  }
+
+  bookACar(bookACar:any):Observable<any>{
+    return this.http.post(`${url}/api/customer/car/book`,bookACar,{
+      headers:this.createAuthorizationHeader()
+    });
+  }
+
   createAuthorizationHeader():HttpHeaders{
     let authHeader:HttpHeaders=new HttpHeaders();
     return authHeader.set(
