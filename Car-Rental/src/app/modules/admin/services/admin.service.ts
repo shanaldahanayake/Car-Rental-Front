@@ -23,6 +23,30 @@ export class AdminService {
       headers:this.createAuthorizationHeader()
     });
   }
+  getAllCarsByBrand(brand:any):Observable<any>{
+    return this.http.get(`${url}/api/admin/car/search`,{
+      params: brand ,
+      headers:this.createAuthorizationHeader()
+    });
+  }
+  getAllCarsByType(type:any):Observable<any>{
+    return this.http.get(`${url}/api/admin/car/search`,{
+      params: type,
+      headers:this.createAuthorizationHeader()
+    });
+  }
+  getAllCarsByTransmission(transmission:any):Observable<any>{
+    return this.http.get(`${url}/api/admin/car/search`,{
+      params:transmission ,
+      headers:this.createAuthorizationHeader()
+    });
+  }
+  getAllCarsByColor(color:any):Observable<any>{
+    return this.http.get(`${url}/api/admin/car/search`,{
+      params:  color ,
+      headers:this.createAuthorizationHeader()
+    });
+  }
 
   deleteCar(id:number):Observable<any>{
     return this.http.delete(`${url}/api/admin/car/${id}`,{
@@ -34,6 +58,18 @@ export class AdminService {
     return this.http.put(`${url}/api/admin/car`,data,{
       headers:this.createAuthorizationHeader()
     });
+  }
+
+  getAllBookings():Observable<any>{
+    return this.http.get(`${url}/api/admin/bookings`,{
+      headers:this.createAuthorizationHeader()
+    });
+  }
+
+  respondBooking(id:number,status:string):Observable<any>{
+    return this.http.post(`${url}/api/admin/bookings/${id}/${status}`,{
+      headers:this.createAuthorizationHeader()
+    })
   }
 
   createAuthorizationHeader():HttpHeaders{

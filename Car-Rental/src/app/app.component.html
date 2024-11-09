@@ -1,14 +1,35 @@
-<div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
+<div class="d-flex flex-column min-vh-100" *ngIf="showHomePage()">
+
   <nav class="navbar navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand">SD Car Rental Service</a>
       <form class="d-flex">
-        <button type="button" routerLink="log" class="btn btn-outline-light me-3">Login</button>
-        <button type="button" routerLink="signup" class="btn btn-outline-light">Sign Up</button>
+        <button type="button" routerLink="log" class="btn btn-outline-light me-3" (click)="hideHomePage()">Login</button>
+        <button type="button" routerLink="signup" class="btn btn-outline-light" (click)="hideHomePage()">Sign Up</button>
       </form>
     </div>
   </nav>
+
+  <section class="bg-cover flex-grow-1 position-relative text-center text-white">
+    <div class="bg-overlay">
+      <div class="container">
+        <div class="centered-text">
+          <h1 class="display-3 fw-bold">Drive Your Dream</h1>
+          <p class="lead">Affordable, Reliable, Luxury Rentals</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p class="mb-0">&copy; 2024 SD Car Rental Service. All rights reserved.</p>
+    <p class="mb-0">
+      <a class="text-white text-decoration-none">Privacy Policy</a> |
+      <a class="text-white text-decoration-none">Terms of Service</a>
+    </p>
+  </footer>
 </div>
+
 
 <div *ngIf="isAdminLoggedIn">
   <nav class="navbar navbar-dark bg-primary">
@@ -17,6 +38,8 @@
       <form class="d-flex">
         <a routerLink="/admin/dashboard" class="text-white text-decoration-none me-5">Dashboard</a>
         <a routerLink="/admin/car" class="text-white text-decoration-none me-5">Post Car</a>
+        <a routerLink="/admin/bookings" class="text-white text-decoration-none me-5">Bookings</a>
+        <a routerLink="/admin/search" class="text-white text-decoration-none me-5">Search Car</a>
         <a routerLink="" class="text-white text-decoration-none" (click)="logOut()">Logout</a>
       </form>
     </div>
@@ -29,6 +52,7 @@
       <a class="navbar-brand">Customer Dashboard</a>
       <form class="d-flex">
         <a routerLink="/customer/dashboard" class="text-white text-decoration-none me-5" font-co>Dashboard</a>
+        <a routerLink="/customer/bookings" class="text-white text-decoration-none me-5">My Bookings</a>
         <a routerLink="" class="text-white text-decoration-none" (click)="logOut()">Logout</a>
       </form>
     </div>
@@ -36,5 +60,5 @@
 </div>
 
 <router-outlet>
-  
+
 </router-outlet>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PostCarComponent } from '../post-car/post-car.component';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './admin-dashboard.component.scss'
 })
 export class AdminDashboardComponent {
-
+ 
   public cars:any=[];
   public setCarToUpdate={
     id:'',
@@ -23,13 +24,17 @@ export class AdminDashboardComponent {
     fuelType:'',
     description:''
   };
-  constructor(private adminService:AdminService){}
+  
+  constructor(private adminService:AdminService){
+  }
 
   ngOnInit(){
     this.getAllCars();
   }
 
+  
   getAllCars(){
+    this.cars.length=0;
     this.adminService.getAllCars().subscribe(res=>{
       res.forEach((element: any) => {
         this.cars.push(element);
@@ -39,9 +44,10 @@ export class AdminDashboardComponent {
 
   deleteCar(id:number){
     this.adminService.deleteCar(id).subscribe(res=>{
-      console.log(res);
+      this.getAllCars();
     })
   }
+
 
   sendDataToUpdateCar(car:any){
     this.setCarToUpdate.id=car.id;
@@ -50,7 +56,7 @@ export class AdminDashboardComponent {
     this.setCarToUpdate.color=car.color;
     this.setCarToUpdate.price=car.price;
     this.setCarToUpdate.transmission=car.transmission;
-    this.setCarToUpdate.fuelType=car.fuelType;
+    this.setCarToUpdate.fuelType=car.typeFuel;
     this.setCarToUpdate.description=car.description;
   }
 

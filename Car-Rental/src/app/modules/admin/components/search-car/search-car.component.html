@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-5">
+            <p class="fs-1 text-start">Search</p>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="carBrand" aria-label="Floating label select example" [(ngModel)]="sortingData.method">
+                    <option selected>Search By</option>
+                    <option *ngFor="let sortingType of sortingTypes" [value]="sortingType">{{ sortingType }}</option>
+                </select>
+                <label for="carBrand">Filter By</label>
+            </div>
+            
+            <div class="form-floating mb-3" *ngIf="isBrand()">
+                <select class="form-select" id="carBrand" aria-label="Floating label select example"
+                [(ngModel)]="sortingData.type">
+                    <option selected>Select</option>
+                    <option *ngFor="let brand of listOfBrands" [value]="brand">{{ brand }}</option>
+                </select>
+                <label for="carBrand">Select a Brand</label>
+            </div>
+
+            <div class="form-floating mb-3" *ngIf="isType()">
+                <select class="form-select" id="typeFuel" aria-label="Floating label select example"
+                [(ngModel)]="sortingData.type">
+                    <option selected>Select</option>
+                    <option *ngFor="let type of lisOfTypes" [value]="type">{{ type }}</option>
+                </select>
+                <label for="typeFuel">Select a Fuel Type</label>
+            </div>
+
+            <div class="form-floating mb-3" *ngIf="isColor()">
+                <select class="form-select" id="color" aria-label="Floating label select example"
+                [(ngModel)]="sortingData.type">
+                    <option selected>Select</option>
+                    <option *ngFor="let type of listOfColor" [value]="type">{{ type }}</option>
+                </select>
+                <label for="color">Select the Color</label>
+            </div>
+
+            <div class="form-floating mb-3" *ngIf="isTransmission()">
+                <select class="form-select" id="transmission" aria-label="Floating label select example"
+                [(ngModel)]="sortingData.type">
+                    <option selected>Select</option>
+                    <option *ngFor="let type of listOfTransmission" [value]="type">{{ type }}</option>
+                </select>
+                <label for="transmission">Select the Transmission Type</label>
+            </div>
+
+            <div class="mt-3" *ngIf="isBrand() || isColor() || isType() ||isTransmission()">
+                <button type="submit" class="btn btn-outline-primary" (click)="searchCar()">Search</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col">
+            <div class="d-flex justify-content-center" *ngFor="let car of cars">
+                <div class="card mb-3" style="width: 600px;">
+                    <div class="row g-0">
+                        <div class="col-12">
+                            <div class="card-body">
+                                <h3 class="card-title text-primary">{{car.brand}}</h3>
+                                <h4 class="card-title fw-bold">{{car.model}}</h4>
+                                <p>Color: <b>{{car.color}}</b> | Price: <b>Rs.{{car.price}}</b> | Transmission:
+                                    <b>{{car.transmission}}</b> | Fuel: <b>{{car.typeFuel}}</b> | Description:
+                                    <b>{{car.description}}</b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>

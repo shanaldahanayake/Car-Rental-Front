@@ -29,6 +29,11 @@ export class StorageService {
     return userData ? JSON.parse(userData) as User : null;
   }
 
+  static getUserId(): string {
+    const user = this.getUser();
+    return user ? user.id : "";
+  }
+
   static getUserRole(): string {
     const user = this.getUser();
     return user ? user.role : "";

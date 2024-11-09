@@ -24,6 +24,12 @@ export class CustomerService {
     });
   }
 
+  getAllBookingsById(userId:string):Observable<any>{
+    return this.http.get(`${url}/api/customer/car/bookings/${userId}`,{
+      headers:this.createAuthorizationHeader()
+    });
+  }
+
   bookACar(bookACar:any):Observable<any>{
     return this.http.post(`${url}/api/customer/car/book`,bookACar,{
       headers:this.createAuthorizationHeader()

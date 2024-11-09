@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { PostCarComponent } from './components/post-car/post-car.component';
+import { BookingsComponent } from './components/bookings/bookings.component';
+import { SearchCarComponent } from './components/search-car/search-car.component';
 
 const routes: Routes = [
   {
@@ -11,6 +13,14 @@ const routes: Routes = [
   {
     path:"car",
     component:PostCarComponent
+  },
+  {
+    path:"bookings",
+    component:BookingsComponent
+  },
+  {
+    path:"search",
+    component:SearchCarComponent
   }
 ];
 

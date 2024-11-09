@@ -3,66 +3,62 @@
         <div class="col-5">
             <p class="fs-1 text-center mt-3 mb-3">Post a Car</p>
             <div class="row mt-5"></div>
-            <form [formGroup]="postCarForm">
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="carBrand" aria-label="Floating label select example"
+                    [(ngModel)]="car.brand">
+                    <option selected>Select</option>
+                    <option *ngFor="let brand of listOfBrands" [value]="brand">{{ brand }}</option>
+                </select>
+                <label for="carBrand">Select a Brand</label>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" placeholder="Model of The Car"
+                    aria-label="default input example" [(ngModel)]="car.model">
+            </div>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="typeFuel" aria-label="Floating label select example"
+                    [(ngModel)]="car.typeFuel">
+                    <option selected>Select</option>
+                    <option *ngFor="let type of lisOfTypes" [value]="type">{{ type }}</option>
+                </select>
+                <label for="carBrand">Select a Fuel Type</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="transmission" aria-label="Floating label select example"
+                    [(ngModel)]="car.transmission">
+                    <option selected>Select</option>
+                    <option *ngFor="let transmission of listOfTransmission" [value]="transmission">{{ transmission }}
+                    </option>
+                </select>
+                <label for="carBrand">Select the Transmission Type</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="color" aria-label="Floating label select example"
+                    [(ngModel)]="car.color">
+                    <option selected>Select</option>
+                    <option *ngFor="let color of listOfColor" [value]="color">{{ color }}</option>
+                </select>
+                <label for="carBrand">Select the Color</label>
+            </div>
+
+            <div class="mb-3">
+                <input type="text" class="form-control" id="price" placeholder="Price" [(ngModel)]="car.price">
+            </div>
+
+            <div class="mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"
+                [(ngModel)]="car.description"></textarea>
+            </div>
 
 
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="carBrand" aria-label="Floating label select example"
-                        formControlName="brand">
-                        <option selected>Select</option>
-                        <option *ngFor="let brand of listOfBrands" [value]="brand">{{ brand }}</option>
-                    </select>
-                    <label for="carBrand">Select a Brand</label>
-                </div>
-
-                <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Model of The Car"
-                        aria-label="default input example" formControlName="model">
-                </div>
-
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="typeFuel" aria-label="Floating label select example"
-                        formControlName="typeFuel">
-                        <option selected>Select</option>
-                        <option *ngFor="let type of lisOfTypes" [value]="type">{{ type }}</option>
-                    </select>
-                    <label for="carBrand">Select a Fuel Type</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="transmission" aria-label="Floating label select example"
-                        formControlName="transmission">
-                        <option selected>Select</option>
-                        <option *ngFor="let type of listOfTransmission" [value]="type">{{ type }}</option>
-                    </select>
-                    <label for="carBrand">Select the Transmission Type</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="color" aria-label="Floating label select example"
-                        formControlName="color">
-                        <option selected>Select</option>
-                        <option *ngFor="let type of listOfColor" [value]="type">{{ type }}</option>
-                    </select>
-                    <label for="carBrand">Select the Color</label>
-                </div>
-
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="price" placeholder="Price" formControlName="price">
-                </div>
-
-                <div class="mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"
-                        formControlName="description"></textarea>
-                </div>
-                
-
-                <div class="d-grid gap-2 mb-3">
-                    <button class="btn btn-primary" type="button" (click)="postCar()">Post Car</button>
-                </div>
-
-            </form>
-
+            <div class="d-grid gap-2 mb-3">
+                <button class="btn btn-primary" type="button" (click)="postCarMethod()">Post Car</button>
+            </div>
         </div>
     </div>
 </div>

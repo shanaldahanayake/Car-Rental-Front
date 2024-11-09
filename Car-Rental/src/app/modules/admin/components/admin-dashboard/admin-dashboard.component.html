@@ -1,20 +1,24 @@
-<div class="row justify-content-md-center mt-5">
-    <div class="col">
-        <div class="d-flex justify-content-center" *ngFor="let car of cars">
-            <div class="card mb-3" style="width: 600px;">
-                <div class="row g-0">
-                    <div class="col-12">
-                        <div class="card-body">
-                            <h3 class="card-title text-primary">{{car.brand}}</h3>
-                            <h4 class="card-title fw-bold">{{car.model}}</h4>
-                            <p>Color: <b>{{car.color}}</b> | Price: <b>Rs.{{car.price}}</b> | Transmission:
-                                <b>{{car.transmission}}</b> | Fuel: <b>{{car.typeFuel}}</b> | Description:
-                                <b>{{car.description}}</b>
-                            </p>
-                            <div class="d-flex justify-content-end">
-                                <button class="btn btn-danger me-2" (click)="deleteCar(car.id)">Delete</button>
-                                <button class="btn btn-primary me-2" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal" (click)="sendDataToUpdateCar(car)">Update</button>
+<div class="container">
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col">
+            <div class="d-flex justify-content-center" *ngFor="let car of cars">
+                <div class="card mb-3" style="width: 600px;">
+                    <div class="row g-0">
+                        <div class="col-12">
+                            <div class="card-body">
+                                <h3 class="card-title text-primary">{{car.brand}}</h3>
+                                <h4 class="card-title fw-bold">{{car.model}}</h4>
+                                <p>Color: <b>{{car.color}}</b> | Price: <b>Rs.{{car.price}}</b> | Transmission:
+                                    <b>{{car.transmission}}</b> | Fuel: <b>{{car.typeFuel}}</b> | Description:
+                                    <b>{{car.description}}</b>
+                                </p>
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-danger me-2" (click)="deleteCar(car.id)">Delete</button>
+                                    <button class="btn btn-primary me-2" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal"
+                                        (click)="sendDataToUpdateCar(car)">Update</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -22,56 +26,59 @@
             </div>
         </div>
     </div>
-</div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Car</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Brand</label>
-                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.brand">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Car</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
 
-                <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Model</label>
-                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.model">
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Brand</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.brand">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Model</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.model">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Color</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.color">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Price</label>
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.price">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Transmission</label>
+                        <input type="text" class="form-control" id="recipient-name"
+                            [(ngModel)]="setCarToUpdate.transmission">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Fuel</label>
+                        <input type="text" class="form-control" id="recipient-name"
+                            [(ngModel)]="setCarToUpdate.fuelType">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Description</label>
+                        <input type="text" class="form-control" id="recipient-name"
+                            [(ngModel)]="setCarToUpdate.description">
+                    </div>
+
                 </div>
-
-                <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Color</label>
-                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.color">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="updateCar(setCarToUpdate)">Submit</button>
                 </div>
-
-                <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Price</label>
-                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.price">
-                </div>
-
-                <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Transmission</label>
-                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.transmission">
-                </div>
-
-                <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Fuel</label>
-                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.fuelType">
-                </div>
-
-                <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Description</label>
-                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="setCarToUpdate.description">
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="updateCar(setCarToUpdate)">Submit</button>
             </div>
         </div>
     </div>
